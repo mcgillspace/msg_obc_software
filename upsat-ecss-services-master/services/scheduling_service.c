@@ -184,7 +184,7 @@ SAT_returnState cross_schedules() {
                     }
                     break;*/
                 case REPETITIVE:                    
-                    uint32_t qb_time = return_time_QB50();
+                    uint32_t qb_time = return_time_QB50();   // qb_time is simply seconds since 2000
                     if(!C_ASSERT(qb_time >= MIN_VALID_QB50_SECS) == true ) { 
                         wdg_reset_SCH();
                         return SATR_QBTIME_INVALID; }

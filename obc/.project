@@ -27,17 +27,17 @@
 		<link>
 			<name>core</name>
 			<type>2</type>
-			<location>C:/Users/david/OneDrive/Documents/MSG/OBC/software/upsat-obc-software-master/upsat-obc-software-master/cubeMX/upsat-ecss-services-master/core</location>
+			<location>C:/Users/david/OneDrive/Documents/MSG/OBC/software/upsat-obc-software-master/upsat-obc-software-master/obc_software/upsat-ecss-services-master/core</location>
 		</link>
 		<link>
 			<name>obc</name>
 			<type>2</type>
-			<location>C:/Users/david/OneDrive/Documents/MSG/OBC/software/upsat-obc-software-master/upsat-obc-software-master/cubeMX/upsat-ecss-services-master/platform/obc</location>
+			<location>C:/Users/david/OneDrive/Documents/MSG/OBC/software/upsat-obc-software-master/upsat-obc-software-master/obc_software/upsat-ecss-services-master/platform/obc</location>
 		</link>
 		<link>
 			<name>services</name>
 			<type>2</type>
-			<location>C:/Users/david/OneDrive/Documents/MSG/OBC/software/upsat-obc-software-master/upsat-obc-software-master/cubeMX/upsat-ecss-services-master/services</location>
+			<location>C:/Users/david/OneDrive/Documents/MSG/OBC/software/upsat-obc-software-master/upsat-obc-software-master/obc_software/upsat-ecss-services-master/services</location>
 		</link>
 	</linkedResources>
 </projectDescription>

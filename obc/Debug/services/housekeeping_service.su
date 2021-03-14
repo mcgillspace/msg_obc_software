@@ -1,0 +1,4 @@
+housekeeping_service.c:13:17:hk_app	32	static
+housekeeping_service.c:44:17:hk_crt_empty_pkt_TM	16	static
+housekeeping_service.c:53:17:hk_crt_pkt_TC	32	static
+housekeeping_service.c:65:17:hk_crt_pkt_TM	32	static

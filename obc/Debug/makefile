@@ -82,8 +82,8 @@ all: main-build
 main-build: obc.elf secondary-outputs
 
 # Tool invocations
-obc.elf: $(OBJS) $(USER_OBJS) fail-specified-linker-script-missing
-	arm-none-eabi-gcc -o "obc.elf" @"objects.list" $(USER_OBJS) $(LIBS) --specs=nosys.specs -Wl,-Map="obc.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+obc.elf: $(OBJS) $(USER_OBJS) C:\Users\david\OneDrive\Documents\MSG\ADCS\upsat-adcs-software\adcs\STM32F405RGTx_FLASH.ld
+	arm-none-eabi-gcc -o "obc.elf" @"objects.list" $(USER_OBJS) $(LIBS) -T"C:\Users\david\OneDrive\Documents\MSG\ADCS\upsat-adcs-software\adcs\STM32F405RGTx_FLASH.ld" --specs=nosys.specs -Wl,-Map="obc.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

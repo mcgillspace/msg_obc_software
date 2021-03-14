@@ -208,11 +208,6 @@ int main(void)
 
 
 
-
-
-
-
-
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -687,7 +682,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc) {
 void UART_task(void const * argument)
 {
   /* init code for FATFS */
-  MX_FATFS_Init();
+  MX_FATFS_Init();    //used for initialising storage
 
   /* USER CODE BEGIN 5 */
   
@@ -695,7 +690,7 @@ void UART_task(void const * argument)
    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, GPIO_PIN_SET);
    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
 
-   pkt_pool_INIT();
+   pkt_pool_INIT();   //initialising packet pool for receiving messages of other subsystems.
    HAL_obc_enableBkUpAccess();
    bkup_sram_INIT();
 
@@ -719,7 +714,7 @@ void UART_task(void const * argument)
   xTask_UART = xTaskGetCurrentTaskHandle();
   TickType_t blockTime;
 
-  su_INIT();
+  su_INIT();  //we wont need that
 
   scheduling_service_init();
 
@@ -728,7 +723,7 @@ void UART_task(void const * argument)
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
   /*Uart inits*/
   HAL_UART_Receive_IT( &huart1, obc_data.eps_uart.uart_buf, UART_BUF_SIZE);
-  HAL_UART_Receive_IT( &huart2, MNLP_data.su_inc_resp, 174);
+  HAL_UART_Receive_IT( &huart2, MNLP_data.su_inc_resp, 174);   //wont need that
   HAL_UART_Receive_IT( &huart3, obc_data.dbg_uart.uart_buf, UART_BUF_SIZE);
   HAL_UART_Receive_IT( &huart4, obc_data.comms_uart.uart_buf, UART_BUF_SIZE);
   HAL_UART_Receive_IT( &huart6, obc_data.adcs_uart.uart_buf, UART_BUF_SIZE);
@@ -737,9 +732,9 @@ void UART_task(void const * argument)
   for(;;)
   {
     task_times.uart_time = HAL_sys_GetTick();
-    su_incoming_rx();
-    import_pkt(EPS_APP_ID, &obc_data.eps_uart);
-    export_pkt(EPS_APP_ID, &obc_data.eps_uart);
+    su_incoming_rx();  //wont need this
+    import_pkt(EPS_APP_ID, &obc_data.eps_uart);   //listens to power board
+    export_pkt(EPS_APP_ID, &obc_data.eps_uart);	  // tells the power board what to do
 
     import_pkt(COMMS_APP_ID, &obc_data.comms_uart);
     export_pkt(COMMS_APP_ID, &obc_data.comms_uart);
@@ -751,6 +746,8 @@ void UART_task(void const * argument)
     export_pkt(DBG_APP_ID, &obc_data.dbg_uart);
 
     wdg_reset_UART();
+
+
     if(uxQueueMessagesWaiting(queueADCS)  > 0  ||
        uxQueueMessagesWaiting(queueDBG)   > 0  ||
        uxQueueMessagesWaiting(queueCOMMS) > 0  ||

@@ -45,8 +45,9 @@ SAT_returnState import_pkt(TC_TM_app_id app_id, struct uart_data *data) {
             pkt = get_pkt(size);
 
             if(!C_ASSERT(pkt != NULL) == true) { return SATR_ERROR; }
-            if((res = unpack_pkt(data->deframed_buf, pkt, size)) == SATR_OK) {
-                stats_inbound(pkt->type, pkt->app_id, pkt->dest_id, pkt);
+            if((res = unpack_pkt(data->deframed_buf, pkt, size)) == SATR_OK) {  //unpack the packet in order to retrieve information and destination
+                //unpacked pkt
+            	stats_inbound(pkt->type, pkt->app_id, pkt->dest_id, pkt);
                 route_pkt(pkt); }
             else {
                 stats_dropped_upack();

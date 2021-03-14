@@ -1,0 +1,5 @@
+event_reporting_service.c:17:17:event_app	24	static
+event_reporting_service.c:28:17:event_boot	24	static
+event_reporting_service.c:47:17:event_pkt_pool_timeout	16	static
+event_reporting_service.c:65:17:event_ms_err	24	static
+event_reporting_service.c:86:17:event_crt_pkt	40	static

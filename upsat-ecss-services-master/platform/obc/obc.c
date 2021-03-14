@@ -1,5 +1,4 @@
 #include "obc.h"
-
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
@@ -97,7 +96,7 @@ SAT_returnState route_pkt(tc_tm_pkt *pkt) {
         res = test_app(pkt);
     }else if(id == SYSTEM_APP_ID && pkt->ser_type == TC_SU_MNLP_SERVICE) {
         //TODO: ADD C_ASSERT
-        res = su_nmlp_app(pkt);
+        res = su_nmlp_app(pkt);   //no need
     }
     else if(id == EPS_APP_ID) {
         queuePush(pkt, EPS_APP_ID);
